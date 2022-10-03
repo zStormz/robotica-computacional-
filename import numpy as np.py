@@ -7,10 +7,18 @@ def checa_vetor4(v:np.array) -> None:
     if v.shape != (4,1):
         raise ValueError('O seu valor deveria possuir 4 linhas e um ')
 
-def checa_vetor3(v:np.array) -> None:
+def checa_vetor3x3(v:np.array) -> None:
 
     if v.shape != (3,3):
         raise ValueError('O seu valor deveria possuir 3 linhas e 3 colunas ')       
+        
+def checa_matriz_rotação(m3: np.array, det_tol:float =0.01)->None:
+    checa_vetor3x3(v2)
+    detm = np.linalg.det(v2)
+    if not ((1-det_tol) <= detm <= (1+ det_tol)):
+        raise ValueError('o determinante sla o q')
+
+
 
 if __name__=='__main__':
 
@@ -25,10 +33,11 @@ if __name__=='__main__':
         print(v)
 
     try:
-        checa_vetor3(v2)
+        checa_vetor3x3(v2)
 
     except ValueError as v:
         print(v)
+
 
 
         
