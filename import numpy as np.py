@@ -12,7 +12,7 @@ def checa_vetor3x3(v:np.array) -> None:
     if v.shape != (3,3):
         raise ValueError('O seu valor deveria possuir 3 linhas e 3 colunas ')       
         
-def checa_matriz_rotação(m3: np.array, det_tol:float =0.01)->None:
+def checa_matriz_rotação(v: np.array, det_tol:float =0.01)->None:
     checa_vetor3x3(v2)
     detm = np.linalg.det(v2)
     if not ((1-det_tol) <= detm <= (1+ det_tol)):
@@ -34,6 +34,12 @@ if __name__=='__main__':
 
     try:
         checa_vetor3x3(v2)
+
+    except ValueError as v:
+        print(v)
+
+    try:
+        checa_matriz_rotação(v2)
 
     except ValueError as v:
         print(v)
