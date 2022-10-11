@@ -29,19 +29,15 @@ def cria_vetor3(vlist):
 def checa_vetor4(v: np.ndarray) -> None:
 
     if v.shape != (4, 1):
-        raise ValueError('O vetor não é 4x1!')
+        raise ValueError('O vetor não é 4x1')
 
 
 def checa_matriz33(m: np.array)-> None:
-    '''
-    '''
     
     if m.shape != (3,3):
         raise ValueError('Matriz deve ser 3x3')
 
 def checa_matriz44(m: np.array)-> None:
-    '''
-    '''
 
     if m.shape !=(4,4):
         raise ValueError('Matriz deve ser 4x4')
@@ -103,15 +99,7 @@ res = np.append(res,np.array([[0,0,0,1]]),axis=0)
 
 
 def constroi_vetor(v_b: np.ndarray,m_rot_b_a: np.ndarray = np.eye(3),v_o_a: np.ndarray = np.zeros([3, 1]),det_tol: float = 0.01) -> np.ndarray:
-    """
-    Recebe um vetor v_b escrito na base 'b'. A partir da matriz de rotação m_rot_b_a e do vetor origem v_o_a, constroi o
-    operador de transformação homogênea que constrói um vetor na base 'a' que aponta para o mesmo ponto que o vetor v_b.
-    :param v_b: vetor referência na base 'b'
-    :param m_rot_b_a: matriz de rotação que leva de 'b' a 'a'
-    :param v_o_a: vetor origem da base 'b' escrito na base 'a'
-    :param det_tol: tolerância do determinante
-    :return: vetor (3, 1) na base a
-    """
+
     checa_vetor3(v_b)
     checa_matriz33(m_rot_b_a)
     checa_matriz_rotacao(m_rot_b_a)
@@ -123,17 +111,3 @@ def constroi_vetor(v_b: np.ndarray,m_rot_b_a: np.ndarray = np.eye(3),v_o_a: np.n
     v = T @ v_b4
 
     return np.asarray(v[0:3, :])
-
-def __distancia_entre_retas_np(po1: np.ndarray, vs1: np.ndarray, po2: np.ndarray, vs2: np.ndarray) -> float:
-    """
-    * FUNÇÃO INTERNA AO MÓDULO *
-    Calcula a distância entre duas retas não paralelas no espaço.
-    Um ponto na reta i é dado por: Pi = poi + vsi*t, sendo t um parâmetro livre.
-    'distancia_entre_retas'
-    :param po1: Vetor posição de um ponto de referência na reta 1
-    :param vs1: Vetor orientação da reta 1
-    :param po2: Vetor posição de um ponto de referência na reta 2
-    :param vs2: Vetor orientação da reta 1
-    :return: distância entre as retas (float, positivo ou nulo)
-    """
-    pass
